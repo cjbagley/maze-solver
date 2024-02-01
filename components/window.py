@@ -1,4 +1,6 @@
 from tkinter import Tk, BOTH, Canvas
+from components.line import Line
+from components.point import Point
 
 class Window:
     """ Root window component """
@@ -23,3 +25,6 @@ class Window:
 
     def close(self) -> None:
         self.__isRunning = False
+
+    def draw_line(self, line: Line, fill_color="black") -> None:
+        line.draw(self.__canvas, fill_color)
