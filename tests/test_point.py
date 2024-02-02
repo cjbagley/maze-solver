@@ -1,5 +1,5 @@
 from unittest import TestCase
-from components.point import Point
+from gui.point import Point
 
 class TestPoint(TestCase):
     def test_point_construction(self):

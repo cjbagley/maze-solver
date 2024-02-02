@@ -1,16 +1,15 @@
 #!/usr/bin/env python
 import sys
-from components.window import Window
-from components.line import Line
-from components.point import Point
+from gui.window import Window
+from gui.line import Line
+from gui.point import Point
+from gui.cell import Cell 
 
 def main() -> int:
     """Maze solver"""
     win = Window(800, 800)
-    line_a = Line(Point(0, 200), Point(200, 200))
-    win.draw_line(line_a, "black")
-    line_b = Line(Point(650, 507), Point(522, 2))
-    win.draw_line(line_b, "purple")
+    cell = Cell(win, Point(10, 10), Point(790, 790))
+    cell.draw()
     win.wait_for_close()
     return 0
 

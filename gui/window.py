@@ -1,6 +1,6 @@
 from tkinter import Tk, BOTH, Canvas
-from components.line import Line
-from components.point import Point
+from gui.line import Line
+from gui.point import Point
 
 class Window:
     """ Root window component """
@@ -10,7 +10,7 @@ class Window:
         self.__root = Tk()
         self.__root.title("Maze Solver")
         self.__root.protocol("WM_DELETE_WINDOW", self.close)
-        self.__canvas = Canvas(self.__root, height=self.__height, width=self.__width, background="aqua")
+        self.__canvas = Canvas(self.__root, height=self.__height, width=self.__width, background="black")
         self.__canvas.pack(fill=BOTH, expand=1)
         self.__isRunning = False
 

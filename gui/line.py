@@ -1,4 +1,4 @@
-from components.point import Point
+from gui.point import Point
 from tkinter import Canvas
 
 class Line:

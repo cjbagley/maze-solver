@@ -1,5 +1,5 @@
 from unittest import TestCase
-from components.window import Window
+from gui.window import Window
 
 class TestWindow(TestCase):
     def test_window_construction(self):

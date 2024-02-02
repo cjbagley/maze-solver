@@ -1,6 +1,6 @@
 from unittest import TestCase
-from components.line import Line
-from components.point import Point
+from gui.line import Line
+from gui.point import Point
 
 class TestLine(TestCase):
     def test_line_construction(self):
