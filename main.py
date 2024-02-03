@@ -12,10 +12,10 @@ def main() -> int:
     maze = Maze(
             window=win,
             starting_point=Point(0,0),
-            num_rows=4,
-            num_cols=10,
-            cell_size_x=10,
-            cell_size_y=10,
+            num_rows=8,
+            num_cols=8,
+            cell_size_x=100,
+            cell_size_y=100,
     )
     # cella = Cell(win, Point(10, 10), Point(100, 100))
     # cella.has_right_wall = False

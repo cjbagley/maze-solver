@@ -30,7 +30,6 @@ class Cell:
         if self.has_bottom_wall:
             wall = Line(Point(self.__tl_x, self.__br_y), Point(self.__br_x, self.__br_y))
             self.__window.draw_line(wall)
-        print(self)
     
     def draw_move(self, to_cell: 'Cell', undo:bool=False) -> None:
         line_color = "gray"

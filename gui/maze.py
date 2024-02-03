@@ -1,6 +1,7 @@
 from gui.cell import Cell
 from gui.point import Point
 from gui.window import Window
+import time
 
 class Maze:
     """ Holds all the cells in the maze in a 2d grid, a list of lists """
@@ -29,9 +30,10 @@ class Maze:
                 tl = self.__get_top_left(i, j)
                 br = self.__get_bottom_right(i, j)
                 cell = Cell(self.__win, tl, br)
+                cell.draw()
+                self.__animate()
                 col.append(cell)
             self.__cells.append(col)
-
 
     def __get_top_left(self, col: int, row: int) -> Point:
         if col == 1 and row == 1:
@@ -49,4 +51,5 @@ class Maze:
         pass
     
     def __animate(self) -> None:
-        pass
+        time.sleep(.05)
+        self.__win.redraw()
