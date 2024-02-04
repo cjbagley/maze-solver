@@ -5,13 +5,30 @@ from gui.point import Point
 
 class TestMaze(TestCase):
     def test_maze_construction(self):
-        win = Window(700, 600)
-        starting_point = Point(10, 100)
-        Maze(
+        win = Window(800, 800)
+        starting_point = Point(0, 0)
+        rows = 3
+        cols = 4
+        m = Maze(
             window=win,
             starting_point=starting_point,
-            num_rows=3,
-            num_cols=4,
+            num_rows=rows,
+            num_cols=cols,
             cell_size_x=4,
             cell_size_y=5
         )
+        self.assertEqual(len(m._Maze__cells), cols)
+        self.assertEqual(len(m._Maze__cells[0]), rows)
+        
+        rows = 1
+        cols = 9
+        m = Maze(
+            window=win,
+            starting_point=starting_point,
+            num_rows=rows,
+            num_cols=cols,
+            cell_size_x=10,
+            cell_size_y=20
+        )
+        self.assertEqual(len(m._Maze__cells), cols)
+        self.assertEqual(len(m._Maze__cells[0]), rows)
