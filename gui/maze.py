@@ -46,10 +46,7 @@ class Maze:
         x = self.__start.x + (col * self.__cell_size_x)
         y = self.__start.y + (row * self.__cell_size_y)
         return Point(x, y)
-    
-    def __draw_cell(self,i,j) -> None:
-        pass
-    
+
     def __animate(self) -> None:
-        time.sleep(.05)
         self.__win.redraw()
+        time.sleep(.05)
