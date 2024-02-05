@@ -2,35 +2,19 @@
 import sys
 from gui.maze import Maze
 from gui.window import Window
-from gui.line import Line
 from gui.point import Point
-from gui.cell import Cell 
 
 def main() -> int:
     """Maze solver"""
-    win = Window(800, 800)
-    maze = Maze(
+    win = Window(820, 820)
+    Maze(
             window=win,
-            starting_point=Point(0,0),
+            starting_point=Point(10,10),
             num_rows=8,
             num_cols=8,
             cell_size_x=100,
             cell_size_y=100,
     )
-    # cella = Cell(win, Point(10, 10), Point(100, 100))
-    # cella.has_right_wall = False
-    # cella.draw()
-    #
-    # cellb = Cell(win, Point(100, 10), Point(200, 100))
-    # cellb.has_left_wall = False
-    # cellb.has_bottom_wall = False
-    # cellb.draw()
-    # cellb.draw_move(cella, True)
-    #
-    # cellc = Cell(win, Point(100, 100), Point(200, 200))
-    # cellc.has_top_wall = False
-    # cellc.draw()
-    # cellc.draw_move(cellb, True)
 
     win.wait_for_close()
     return 0

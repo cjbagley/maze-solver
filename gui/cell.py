@@ -18,19 +18,24 @@ class Cell:
 
     
     def draw(self) -> None:
-        if self.has_right_wall:
-            wall = Line(Point(self.__br_x, self.__tl_y), Point(self.__br_x, self.__br_y))
+        right_wall = Line(Point(self.__br_x, self.__tl_y), Point(self.__br_x, self.__br_y))
+        self.__draw_wall_line(right_wall, self.has_right_wall)
+
+        left_wall = Line(Point(self.__tl_x, self.__tl_y), Point(self.__tl_x, self.__br_y))
+        self.__draw_wall_line(left_wall, self.has_left_wall)
+
+        top_wall = Line(Point(self.__tl_x, self.__tl_y), Point(self.__br_x, self.__tl_y))
+        self.__draw_wall_line(top_wall, self.has_top_wall)
+
+        bottom_wall = Line(Point(self.__tl_x, self.__br_y), Point(self.__br_x, self.__br_y))
+        self.__draw_wall_line(bottom_wall, self.has_bottom_wall)
+
+    def __draw_wall_line(self, wall: Line, visible:bool=True) -> None:
+        if visible:
             self.__window.draw_line(wall)
-        if self.has_left_wall:
-            wall = Line(Point(self.__tl_x, self.__tl_y), Point(self.__tl_x, self.__br_y))
-            self.__window.draw_line(wall)
-        if self.has_top_wall:
-            wall = Line(Point(self.__tl_x, self.__tl_y), Point(self.__br_x, self.__tl_y))
-            self.__window.draw_line(wall)
-        if self.has_bottom_wall:
-            wall = Line(Point(self.__tl_x, self.__br_y), Point(self.__br_x, self.__br_y))
-            self.__window.draw_line(wall)
-    
+        else:
+            self.__window.draw_line(wall, "white")
+
     def draw_move(self, to_cell: 'Cell', undo:bool=False) -> None:
         line_color = "gray"
         if undo:
