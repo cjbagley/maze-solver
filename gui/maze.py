@@ -17,17 +17,17 @@ class Maze:
             seed: int=0,
         ) -> None:
         self.__win = window
-        self.__seed = seed 
         self.__start = starting_point
         self.__num_rows = num_rows
         self.__num_cols = num_cols
         self.__cell_size_x = cell_size_x
         self.__cell_size_y = cell_size_y
+        if seed > 0:
+            random.seed(seed)
         self.__cells = []
         self.__create_cells()
         self.__break_entrance_and_exit()
         self.__break_walls_r(0,0)
-        print("DONE")
 
     def __create_cells(self) -> None:
         for i in range(1, self.__num_cols + 1):
@@ -64,7 +64,7 @@ class Maze:
 
     def __animate(self) -> None:
         self.__win.redraw()
-        time.sleep(.05)
+        time.sleep(.01)
     
     def __break_walls_r(self, i, j):
         current = self.__cells[i][j]
@@ -85,7 +85,6 @@ class Maze:
                 to_visit.append(("left", i-1, j))
             if len(to_visit) == 0:
                 return
-            random.seed = self.__seed
             direction = random.choice(to_visit)
             chosen = self.__cells[direction[1]][direction[2]]
 
@@ -101,7 +100,6 @@ class Maze:
             else:
                 chosen.has_right_wall = False 
                 current.has_left_wall = False 
-
             current.draw()
             chosen.draw()
             self.__break_walls_r(direction[1], direction[2])

@@ -10,10 +10,11 @@ def main() -> int:
     Maze(
             window=win,
             starting_point=Point(10,10),
-            num_rows=8,
-            num_cols=8,
-            cell_size_x=100,
-            cell_size_y=100,
+            num_rows=16,
+            num_cols=16,
+            cell_size_x=50,
+            cell_size_y=50,
+            seed=45,
     )
 
     win.wait_for_close()
