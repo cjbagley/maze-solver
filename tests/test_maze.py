@@ -40,3 +40,24 @@ class TestMaze(TestCase):
         self.assertEqual(entrance.has_top_wall, False)
         exit = m._cells[cols-1][rows-1]
         self.assertEqual(exit.has_bottom_wall, False)
+
+    def test_reset_visited_cells(self):
+        win = Window(800, 800)
+        rows = 10
+        cols = 12
+        m = Maze(
+            window=win,
+            starting_point=Point(10,10),
+            num_rows=rows,
+            num_cols=cols,
+            cell_size_x=40,
+            cell_size_y=40,
+        )
+        all_clear = True
+        for x in range(0, cols):
+            for y in range(0, rows):
+                if m._cells[x][y].visited == True:
+                    all_clear = False
+                    break
+
+        self.assertEqual(all_clear, True)
