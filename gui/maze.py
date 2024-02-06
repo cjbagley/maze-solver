@@ -75,10 +75,10 @@ class Maze:
             if j-1 >= 0 and self._cells[i][j-1].visited == False:
                 to_visit.append(("top", i, j-1))
             # Adjacent right cell
-            if i+1 < self._num_rows and self._cells[i+1][j].visited == False:
+            if i+1 < self._num_cols and self._cells[i+1][j].visited == False:
                 to_visit.append(("right", i+1, j))
             # Adjacent bottom cell
-            if j+1 < self._num_cols and self._cells[i][j+1].visited == False:
+            if j+1 < self._num_rows and self._cells[i][j+1].visited == False:
                 to_visit.append(("bottom", i, j+1))
             # Adjacent left cell
             if i-1 >= 0 and self._cells[i-1][j].visited == False:
