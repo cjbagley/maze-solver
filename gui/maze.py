@@ -16,77 +16,77 @@ class Maze:
             cell_size_y: int,
             seed: int=0,
         ) -> None:
-        self.__win = window
-        self.__start = starting_point
-        self.__num_rows = num_rows
-        self.__num_cols = num_cols
-        self.__cell_size_x = cell_size_x
-        self.__cell_size_y = cell_size_y
+        self._win = window
+        self._start = starting_point
+        self._num_rows = num_rows
+        self._num_cols = num_cols
+        self._cell_size_x = cell_size_x
+        self._cell_size_y = cell_size_y
         if seed > 0:
             random.seed(seed)
-        self.__cells = []
-        self.__create_cells()
-        self.__break_entrance_and_exit()
-        self.__break_walls_r(0,0)
+        self._cells = []
+        self._create_cells()
+        self._break_entrance_and_exit()
+        self._break_walls_r(0,0)
 
-    def __create_cells(self) -> None:
-        for i in range(1, self.__num_cols + 1):
+    def _create_cells(self) -> None:
+        for i in range(1, self._num_cols + 1):
             col = []
-            for j in range(1, self.__num_rows + 1):
-                tl = self.__get_top_left(i, j)
-                br = self.__get_bottom_right(i, j)
-                cell = Cell(self.__win, tl, br)
+            for j in range(1, self._num_rows + 1):
+                tl = self._get_top_left(i, j)
+                br = self._get_bottom_right(i, j)
+                cell = Cell(self._win, tl, br)
                 cell.draw()
-                self.__animate()
+                self._animate()
                 col.append(cell)
-            self.__cells.append(col)
+            self._cells.append(col)
 
-    def __get_top_left(self, col: int, row: int) -> Point:
+    def _get_top_left(self, col: int, row: int) -> Point:
         if col == 1 and row == 1:
-            return self.__start
-        x = self.__start.x + ((col - 1) * self.__cell_size_x)
-        y = self.__start.y + ((row - 1) * self.__cell_size_y)
+            return self._start
+        x = self._start.x + ((col - 1) * self._cell_size_x)
+        y = self._start.y + ((row - 1) * self._cell_size_y)
         return Point(x, y)
 
-    def __get_bottom_right(self, col: int, row: int) -> Point:
-        x = self.__start.x + (col * self.__cell_size_x)
-        y = self.__start.y + (row * self.__cell_size_y)
+    def _get_bottom_right(self, col: int, row: int) -> Point:
+        x = self._start.x + (col * self._cell_size_x)
+        y = self._start.y + (row * self._cell_size_y)
         return Point(x, y)
 
-    def __break_entrance_and_exit(self):
-        entrance_cell = self.__cells[0][0]
+    def _break_entrance_and_exit(self):
+        entrance_cell = self._cells[0][0]
         entrance_cell.has_top_wall = False
         entrance_cell.draw()
 
-        exit_cell = self.__cells[self.__num_cols-1][self.__num_rows-1]
+        exit_cell = self._cells[self._num_cols-1][self._num_rows-1]
         exit_cell.has_bottom_wall = False
         exit_cell.draw()
 
-    def __animate(self) -> None:
-        self.__win.redraw()
+    def _animate(self) -> None:
+        self._win.redraw()
         time.sleep(.01)
     
-    def __break_walls_r(self, i, j):
-        current = self.__cells[i][j]
+    def _break_walls_r(self, i, j):
+        current = self._cells[i][j]
         current.visited = True
         while True:
             to_visit = []
             # Adjacent top cell
-            if j-1 >= 0 and self.__cells[i][j-1].visited == False:
+            if j-1 >= 0 and self._cells[i][j-1].visited == False:
                 to_visit.append(("top", i, j-1))
             # Adjacent right cell
-            if i+1 < self.__num_rows and self.__cells[i+1][j].visited == False:
+            if i+1 < self._num_rows and self._cells[i+1][j].visited == False:
                 to_visit.append(("right", i+1, j))
             # Adjacent bottom cell
-            if j+1 < self.__num_cols and self.__cells[i][j+1].visited == False:
+            if j+1 < self._num_cols and self._cells[i][j+1].visited == False:
                 to_visit.append(("bottom", i, j+1))
             # Adjacent left cell
-            if i-1 >= 0 and self.__cells[i-1][j].visited == False:
+            if i-1 >= 0 and self._cells[i-1][j].visited == False:
                 to_visit.append(("left", i-1, j))
             if len(to_visit) == 0:
                 return
             direction = random.choice(to_visit)
-            chosen = self.__cells[direction[1]][direction[2]]
+            chosen = self._cells[direction[1]][direction[2]]
 
             if direction[0] == 'top':
                 chosen.has_bottom_wall = False 
@@ -102,5 +102,4 @@ class Maze:
                 current.has_left_wall = False 
             current.draw()
             chosen.draw()
-            self.__break_walls_r(direction[1], direction[2])
-
+            self._break_walls_r(direction[1], direction[2])

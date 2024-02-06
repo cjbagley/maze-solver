@@ -5,26 +5,26 @@ from gui.point import Point
 class Window:
     """ Root window component """
     def __init__(self, height, width) -> None:
-        self.__height = height
-        self.__width = width
-        self.__root = Tk()
-        self.__root.title("Maze Solver")
-        self.__root.protocol("WM_DELETE_WINDOW", self.close)
-        self.__canvas = Canvas(self.__root, height=self.__height, width=self.__width, background="white")
-        self.__canvas.pack(fill=BOTH, expand=1)
-        self.__isRunning = False
+        self._height = height
+        self._width = width
+        self._root = Tk()
+        self._root.title("Maze Solver")
+        self._root.protocol("WM_DELETE_WINDOW", self.close)
+        self._canvas = Canvas(self._root, height=self._height, width=self._width, background="white")
+        self._canvas.pack(fill=BOTH, expand=1)
+        self._isRunning = False
 
     def redraw(self) -> None:
-        self.__root.update_idletasks()
-        self.__root.update()
+        self._root.update_idletasks()
+        self._root.update()
 
     def wait_for_close(self) -> None:
-        self.__isRunning = True
-        while self.__isRunning:
+        self._isRunning = True
+        while self._isRunning:
             self.redraw()
 
     def close(self) -> None:
-        self.__isRunning = False
+        self._isRunning = False
 
     def draw_line(self, line: Line, fill_color="black") -> None:
-        line.draw(self.__canvas, fill_color)
+        line.draw(self._canvas, fill_color)

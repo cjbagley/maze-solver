@@ -14,14 +14,14 @@ class TestMaze(TestCase):
             starting_point=starting_point,
             num_rows=rows,
             num_cols=cols,
-            cell_size_x=4,
-            cell_size_y=5
+            cell_size_x=50,
+            cell_size_y=50,
         )
-        self.assertEqual(len(m._Maze__cells), cols)
-        self.assertEqual(len(m._Maze__cells[0]), rows)
-        entrance = m._Maze__cells[0][0]
+        self.assertEqual(len(m._cells), cols)
+        self.assertEqual(len(m._cells[0]), rows)
+        entrance = m._cells[0][0]
         self.assertEqual(entrance.has_top_wall, False)
-        exit = m._Maze__cells[cols-1][rows-1]
+        exit = m._cells[cols-1][rows-1]
         self.assertEqual(exit.has_bottom_wall, False)
         
         rows = 1
@@ -32,11 +32,11 @@ class TestMaze(TestCase):
             num_rows=rows,
             num_cols=cols,
             cell_size_x=10,
-            cell_size_y=20
+            cell_size_y=20,
         )
-        self.assertEqual(len(m._Maze__cells), cols)
-        self.assertEqual(len(m._Maze__cells[0]), rows)
-        entrance = m._Maze__cells[0][0]
+        self.assertEqual(len(m._cells), cols)
+        self.assertEqual(len(m._cells[0]), rows)
+        entrance = m._cells[0][0]
         self.assertEqual(entrance.has_top_wall, False)
-        exit = m._Maze__cells[cols-1][rows-1]
+        exit = m._cells[cols-1][rows-1]
         self.assertEqual(exit.has_bottom_wall, False)

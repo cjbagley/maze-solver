@@ -8,10 +8,10 @@ class TestCell(TestCase):
         win = Window(700, 600)
         cell = Cell(win, Point(20, 300), Point(51, 360)) 
 
-        self.assertEqual(cell._Cell__tl_x, 20)
-        self.assertEqual(cell._Cell__tl_y, 300)
-        self.assertEqual(cell._Cell__br_x, 51)
-        self.assertEqual(cell._Cell__br_y, 360)
+        self.assertEqual(cell._tl_x, 20)
+        self.assertEqual(cell._tl_y, 300)
+        self.assertEqual(cell._br_x, 51)
+        self.assertEqual(cell._br_y, 360)
 
         self.assertEqual(cell.has_left_wall, True)
         cell.has_left_wall = False
@@ -28,4 +28,3 @@ class TestCell(TestCase):
         mid_point = cell.get_middle()
         self.assertEqual(mid_point.x, 52.5)
         self.assertEqual(mid_point.y, 324.5)
-
