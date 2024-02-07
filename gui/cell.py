@@ -37,9 +37,9 @@ class Cell:
             self._window.draw_line(wall, "white")
 
     def draw_move(self, to_cell: 'Cell', undo:bool=False) -> None:
-        line_color = "gray"
+        line_color = "red"
         if undo:
-            line_color = "red"
+            line_color = "grey"
         line = Line(self.get_middle(), to_cell.get_middle())
         self._window.draw_line(line, line_color)
 

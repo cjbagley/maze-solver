@@ -7,15 +7,15 @@ from gui.point import Point
 def main() -> int:
     """Maze solver"""
     win = Window(820, 820)
-    Maze(
+    m = Maze(
             window=win,
             starting_point=Point(10,10),
             num_rows=16,
             num_cols=16,
             cell_size_x=50,
             cell_size_y=50,
-            seed=45,
     )
+    m.solve()
 
     win.wait_for_close()
     return 0
